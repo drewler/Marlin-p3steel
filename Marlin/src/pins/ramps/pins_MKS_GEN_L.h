@@ -51,3 +51,5 @@
 #endif
 
 #include "pins_RAMPS.h"
+
+#define TEMP_PROBE_PIN TEMP_1_PIN
