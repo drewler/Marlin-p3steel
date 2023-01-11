@@ -26,7 +26,7 @@
  */
 
 #if HOTENDS > 2 || E_STEPPERS > 2
-  #error "MKS GEN L supports up to 2 hotends / E-steppers. Comment out this line to continue."
+  #error "MKS GEN L supports up to 2 hotends / E steppers."
 #endif
 
 #define BOARD_INFO_NAME "MKS GEN L"
@@ -36,6 +36,12 @@
 //
 // Power outputs EFBF or EFBE
 #define MOSFET_D_PIN 7
+
+// Hotend, Hotend, Bed + Fan on D9
+#if FET_ORDER_EEB
+  #define MOSFET_B_PIN 7
+  #define FAN_PIN 9
+#endif
 
 //
 // CS Pins wired to avoid conflict with the LCD
@@ -50,6 +56,15 @@
   #define Y_CS_PIN 63
 #endif
 
+// https://www.reddit.com/r/ender3/comments/amon15/tmc_2208_uart_mks_gen_l_5th_stepper/
+#define Z2_SERIAL_TX_PIN  6
+#define Z2_SERIAL_RX_PIN  11
+
 #include "pins_RAMPS.h"
+
+#define Z2_STEP_PIN       E1_STEP_PIN
+#define Z2_DIR_PIN        E1_DIR_PIN
+#define Z2_ENABLE_PIN     E1_ENABLE_PIN
+#define Z2_CS_PIN         E1_CS_PIN
 
 #define TEMP_PROBE_PIN TEMP_1_PIN
